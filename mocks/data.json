@@ -1,0 +1,18 @@
+{
+  "funcionarios": [
+    {
+      "nome": "Matheus",
+      "sobrenome": "Ferreira",
+      "email": "wyvern800@hotmail.com",
+      "pis": "123",
+      "id": 1
+    },
+    {
+      "nome": "Gabriel",
+      "sobrenome": "Ferreira",
+      "email": "gabriel.h.ferreira@hotmail.com",
+      "pis": "4564564",
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "/funcionarios": "/funcionarios",
+  "/funcionarios/:id": "/funcionarios/:id"
+}
