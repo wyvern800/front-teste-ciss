@@ -14,8 +14,8 @@ export default createGlobalStyle`
 }
 
 * {
-  font-family: 'Viga', sans-serif;
-  font-size: 14px;
+  //font-family: 'Viga', sans-serif;
+  //font-size: 14px;
 }
 
 body, html {

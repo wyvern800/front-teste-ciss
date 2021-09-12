@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BrowserRouter } from 'react-router-dom';
-//import Rodape from './assets/components/Rodape';
+import Header from './assets/components/Header';
 import ScrollToTop from './assets/components/ScrollToTop';
 import Routes from './routes';
 import { Container } from 'react-bootstrap';
@@ -13,6 +13,7 @@ function App() {
       <BrowserRouter>
         <ScrollToTop>
           <Container className="main-container">
+            <Header />
             <Routes />
             <GlobalStyle />
           </Container>

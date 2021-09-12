@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Infos, Erro } from './styles';
 import api from '../../services/api';
+import validator from 'validator';
 
 export default class Add extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export default class Add extends Component {
     this.state = {
       nome: { erro: false, valor: '' },
       sobrenome: { erro: false, valor: '' },
-      email: { erro: false, valor: '' },
+      email: { erro: false, valido: false, valor: '' },
       pis: { erro: false, valor: '' },
     };
   }
@@ -29,7 +30,10 @@ export default class Add extends Component {
     }
     if (email.valor === '') {
       this.setState({ email: { erro: true, valor: '' } });
+    } else if (!validator.isEmail(email.valor)) {
+      this.setState({ email: { erro: true, valido: false, valor: '' } });
     }
+
     if (pis.valor === '') {
       this.setState({ pis: { erro: true, valor: '' } });
     }
@@ -39,7 +43,8 @@ export default class Add extends Component {
       nome.valor !== '' &&
       sobrenome.valor !== '' &&
       email.valor !== '' &&
-      pis.valor !== ''
+      pis.valor !== '' &&
+      email.valido === true
     )
       api
         .post('/funcionarios', {
@@ -80,12 +85,12 @@ export default class Add extends Component {
         break;
       case 'email':
         novoObjeto = {
-          email: { erro: false, preenchido: true, valor: valorEvento },
+          email: { erro: false, valor: valorEvento },
         };
         break;
       case 'pis':
         novoObjeto = {
-          pis: { erro: false, preenchido: true, valor: valorEvento },
+          pis: { erro: false, valor: valorEvento },
         };
         break;
     }
@@ -142,7 +147,13 @@ export default class Add extends Component {
             </div>
           </Infos>
           <Erro>
-            {email.erro ? <label>Email não prenchido</label> : 'E-mail:'}
+            {email.erro ? (
+              <label>Email não prenchido</label>
+            ) : !email.valido && !email.erro && email.valor != '' ? (
+              <label>Email inválido</label>
+            ) : (
+              'E-mail:'
+            )}
           </Erro>
           <input
             id="email"
@@ -150,7 +161,13 @@ export default class Add extends Component {
             value={email.valor}
             placeholder="exemplo@public.com"
             onChange={(e) =>
-              this.setState({ email: { erro: false, valor: e.target.value } })
+              this.setState({
+                email: {
+                  erro: false,
+                  valido: validator.isEmail(email.valor) ? true : false,
+                  valor: e.target.value,
+                },
+              })
             }
             required
           />
@@ -160,7 +177,7 @@ export default class Add extends Component {
           <input
             id="pis"
             type="number"
-            placeholder="Numero do NIS/PIS"
+            placeholder="Numero do PIS/NIS"
             value={pis.valor}
             onChange={(e) =>
               this.setState({ pis: { erro: false, valor: e.target.value } })

@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import { Container } from './styles';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import logo from '../../img/logo2.png';
 
 export default class Header extends Component {
   render() {
     return (
       <>
         <Container>
-          <ul>
-            <li>
-              <NavLink exact to="/" activeClassName="nav-link-active">
-                Home
-              </NavLink>
-            </li>
-          </ul>
+          <Link to="/"><img src={logo} /></Link>
         </Container>
       </>
     );

@@ -1,6 +1,27 @@
 import styled, { keyframes, css } from 'styled-components';
 import { shade } from 'polished';
 
+export const NoEntries = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .btn-add {
+    outline: none;
+    color: white;
+    border: 0;
+    background: #04d361;
+    height: 50px;
+    margin-top: 25px;
+    border-radius: 15px;
+    width: 200px;
+    // Aplicar estilo ao dar hover
+    &:hover {
+      background: ${shade(0.2, '#04d361')};
+    }
+  }
+`;
+
 export const Table = styled.table`
   width: 100%;
   text-align: center;
@@ -16,13 +37,6 @@ export const Table = styled.table`
     margin: 1px;
     // Aplicar estilo ao dar hover
     color: #04d361;
-
-    // Aplica borda caso haja erros
-    ${(props) =>
-      props.isEditing &&
-      css`
-        border: 2px solid #c53030;
-      `}
 
     // Aplicar hover ao botão
     &:hover {
@@ -44,6 +58,13 @@ export const Table = styled.table`
 
   tbody {
     width: 100%;
+
+    // Aplicar cores a elementos pares
+    tr {
+      &:nth-child(even) {
+        background-color: #e3e3e3;
+      }
+    }
   }
 `;
 

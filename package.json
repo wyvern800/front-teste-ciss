@@ -19,7 +19,8 @@
     "react-router-dom": "^5.2.0",
     "react-search-autocomplete": "^2.0.0",
     "styled-components": "^5.2.1",
-    "toastr": "^2.1.4"
+    "toastr": "^2.1.4",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
