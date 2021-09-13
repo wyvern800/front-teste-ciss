@@ -70,9 +70,9 @@ export default class FuncionariosList extends Component {
           <>
             {funcionarios.length < 1 ? (
               <NoEntries>
-                Você ainda não cadastrou nenhum funcionario
+                Você ainda não cadastrou nenhum funcionario...
                 <Link to="/add">
-                  <button className="btn-add">Vamos começar...</button>
+                  <button className="btn-add">Vamos começar</button>
                 </Link>
               </NoEntries>
             ) : (
@@ -80,13 +80,13 @@ export default class FuncionariosList extends Component {
                 <Table>
                   <thead>
                     <tr>
-                      <th>Nome Completo</th>
+                      <th>Nome</th>
                       <th>E-mail</th>
                       <th>PIS/NIS</th>
                       <th>
                         <Link to="/add">
                           <button className="btn-add">
-                            <FaPlusCircle size={30} />
+                            <FaPlusCircle className="button-icon" size={30} />
                           </button>
                         </Link>
                       </th>
@@ -110,7 +110,7 @@ export default class FuncionariosList extends Component {
                           <div className="controls">
                             <Link to={`/edit/${funcionario.id}`}>
                               <button className="btn-edit">
-                                <FaEdit size={20} />
+                                <FaEdit className="button-icon" size={30} />
                               </button>
                             </Link>
                             <button
@@ -119,7 +119,7 @@ export default class FuncionariosList extends Component {
                                 this.remove(this.container, funcionario.id)
                               }
                             >
-                              <FaTrash size={20} />
+                              <FaTrash className="button-icon" size={30} />
                             </button>
                           </div>
                         </td>

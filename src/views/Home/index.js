@@ -3,12 +3,16 @@ import { FaEdit, FaTrash, FaPlusCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import toastr from 'toastr';
 
-import FuncionariosList from '../../assets/components/FuncionariosList'
+import FuncionariosList from '../../assets/components/FuncionariosList';
+
+import { Container } from './styles';
 
 export default class Home extends Component {
   render() {
     return (
-      <FuncionariosList/>
+      <Container>
+        <FuncionariosList />
+      </Container>
     );
   }
 }

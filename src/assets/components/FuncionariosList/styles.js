@@ -13,8 +13,9 @@ export const NoEntries = styled.div`
     background: #04d361;
     height: 50px;
     margin-top: 25px;
-    border-radius: 15px;
+    border-radius: 5px;
     width: 200px;
+    font-weight: bold;
     // Aplicar estilo ao dar hover
     &:hover {
       background: ${shade(0.2, '#04d361')};
@@ -33,7 +34,7 @@ export const Table = styled.table`
     border-color: transparent;
     cursor: pointer;
     transition: all 0.3s linear;
-    width: 25px;
+    width: 15px;
     padding: 1px;
     margin: 1px;
     // Aplicar estilo ao dar hover
@@ -104,7 +105,7 @@ export const Funcionario = styled.tr`
     transition: all 0.3s linear;
     width: 25px;
     padding: 1px;
-    margin: 1px;
+    margin: 5px;
   }
 
   // Botão de editar

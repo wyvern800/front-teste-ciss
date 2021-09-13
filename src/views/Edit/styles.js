@@ -80,6 +80,17 @@ export const Form = styled.form`
 `;
 
 export const Infos = styled.div`
+  @media screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+
+    .two,
+    .one {
+      width: 100%;
+      margin: 0px;
+      margin: 0px;
+    }
+  }
   display: flex;
 
   div {
@@ -97,4 +108,10 @@ export const Infos = styled.div`
   .two {
     margin-left: 5px;
   }
+`;
+
+export const NotFound = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
 `;

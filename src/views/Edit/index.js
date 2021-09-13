@@ -1,8 +1,9 @@
 import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Infos, Erro } from './styles';
+import { Form, Infos, Erro, NotFound } from './styles';
 import api from '../../services/api';
 import validator from 'validator';
+import Loading from '../../assets/components/Loading';
 
 export default class Edit extends Component {
   constructor(props) {
@@ -25,8 +26,9 @@ export default class Edit extends Component {
       .then((response) => {
         const { nome, sobrenome, email, pis } = response.data;
 
-        if (response.status === 404) {
+        if (response == undefined) {
           this.setState({ notFound: true });
+
         } else {
           this.setState({
             nome: { erro: false, valor: nome },
@@ -36,6 +38,10 @@ export default class Edit extends Component {
           });
         }
       })
+      .catch(error => {
+        if (error)
+        this.setState({ notFound: true });
+     })
       .finally(() => {
         this.setState({ loading: false });
       });
@@ -59,7 +65,6 @@ export default class Edit extends Component {
     } else if (!validator.isEmail(email.valor)) {
       this.setState({ email: { erro: true, valido: false, valor: '' } });
     }
-
     if (pis.valor === '') {
       this.setState({ pis: { erro: true, valor: '' } });
     }
@@ -73,7 +78,8 @@ export default class Edit extends Component {
       email.valido === true
     ) {
       const { funcionarioId } = this.props.match.params;
-      api.put(`/funcionarios/${funcionarioId}`, {
+      api
+        .put(`/funcionarios/${funcionarioId}`, {
           nome: nome.valor,
           sobrenome: sobrenome.valor,
           email: email.valor,
@@ -82,7 +88,7 @@ export default class Edit extends Component {
         .then((response) => {
           self.limpar();
         });
-      }
+    }
   }
 
   limpar() {
@@ -130,11 +136,11 @@ export default class Edit extends Component {
     return (
       <>
         {loading ? (
-          <>loading</>
+          <Loading />
         ) : (
           <>
             {notFound ? (
-              <>Not found</>
+              <NotFound>Funcionário não encontrado!</NotFound>
             ) : (
               <>
                 <Form action="post" onSubmit={() => editar()}>

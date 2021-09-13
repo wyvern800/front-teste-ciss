@@ -7,6 +7,7 @@ export const Container = styled.div`
 
   img {
     margin-bottom: 15px;
+    width: 100%;
   }
 
   .nav-link-active {

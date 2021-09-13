@@ -37,6 +37,11 @@ textarea {
 }
 
 .main-container {
+  // Aplicar estilo em telas menores
+  @media screen and (max-width: 600px) {
+    margin: 2rem auto 0;
+  }
+
   padding: 20px;
   background: white;
   border-radius: 10px;
