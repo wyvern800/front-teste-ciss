@@ -17,13 +17,6 @@ export const Table = styled.table`
     // Aplicar estilo ao dar hover
     color: #04d361;
 
-    // Aplica borda caso haja erros
-    ${(props) =>
-      props.isEditing &&
-      css`
-        border: 2px solid #c53030;
-      `}
-
     // Aplicar hover ao botão
     &:hover {
       color: ${shade(0.2, '#04d361')};

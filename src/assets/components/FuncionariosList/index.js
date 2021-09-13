@@ -12,7 +12,6 @@ export default class FuncionariosList extends Component {
   state = {
     funcionarios: [],
     loading: true,
-    editing: false,
   };
 
   /**
@@ -61,7 +60,7 @@ export default class FuncionariosList extends Component {
   }
 
   render() {
-    const { funcionarios, loading, editing } = this.state;
+    const { funcionarios, loading } = this.state;
 
     return (
       <>
@@ -86,7 +85,7 @@ export default class FuncionariosList extends Component {
                       <th>PIS/NIS</th>
                       <th>
                         <Link to="/add">
-                          <button className="btn-add" isEditing={editing}>
+                          <button className="btn-add">
                             <FaPlusCircle size={30} />
                           </button>
                         </Link>
@@ -109,9 +108,11 @@ export default class FuncionariosList extends Component {
                         </td>
                         <td>
                           <div className="controls">
-                            <button className="btn-edit">
-                              <FaEdit size={20} />
-                            </button>
+                            <Link to={`/edit/${funcionario.id}`}>
+                              <button className="btn-edit">
+                                <FaEdit size={20} />
+                              </button>
+                            </Link>
                             <button
                               className="btn-remove"
                               onClick={() =>
