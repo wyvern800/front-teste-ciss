@@ -25,6 +25,7 @@ export const NoEntries = styled.div`
 export const Table = styled.table`
   width: 100%;
   text-align: center;
+  border: 1px solid #e1e1df;
 
   .btn-add {
     outline: none;
@@ -47,6 +48,7 @@ export const Table = styled.table`
   thead {
     width: 100%;
     color: gray;
+    border: 1px solid #e3e3e3;
 
     tr {
       th {
@@ -70,9 +72,12 @@ export const Table = styled.table`
 
 export const Funcionario = styled.tr`
   color: white;
-  border: 1px solid black;
   width: 100%;
   height: 50px;
+
+  &:not(:first) {
+    border-bottom: 1px dashed #dcdcda;
+  }
 
   // Aplicado apenas aos componentes depois do primeiro
   td {
