@@ -59,7 +59,7 @@
     "historyApiFallback": true
   },
   "scripts": {
-    "dev": "webpack-dev-server  --mode development",
+    "start": "webpack-dev-server  --mode development",
     "json-server": "json-server --watch mocks/data.json --routes mocks/routes.json --port 3001 --middlewares mocks/middlewares/index.js",
     "build": "webpack --mode production"
   }
